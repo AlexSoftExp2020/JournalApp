@@ -42,7 +42,10 @@ struct CurveThemeView: View {
                         .frame(width: 30)
                         .foregroundColor(.curveOrange)
                         .offset(x: 6, y: 5)
-                    Circle().frame(width: 18).foregroundColor(.curveRed).offset(x: 0, y: 20)
+                    Circle()
+                        .frame(width: 18)
+                        .foregroundColor(.curveRed)
+                        .offset(x: 0, y: 20)
                 }
             }
         }
@@ -50,5 +53,6 @@ struct CurveThemeView: View {
 }
 
 #Preview {
-    CurveThemeView().modifier(EntryBannerStyle(theme: .curve))
+    CurveThemeView()
+        .modifier(EntryBannerStyle(theme: .curve))
 }
