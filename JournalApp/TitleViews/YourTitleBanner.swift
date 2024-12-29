@@ -7,12 +7,41 @@
 
 import SwiftUI
 
-struct YourTitleBanner: View {
+struct YourTitleBannerView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack {
+                ZStack {
+                    Circle()
+                        .frame(width: 25)
+                        .foregroundColor(.bannerBlue)
+                    Circle()
+                        .frame(width: 15)
+                        .foregroundColor(.bannerYellow)
+                        .offset(x: -10, y: -5)
+                }
+                ZStack {
+                    Circle()
+                        .frame(width: 30)
+                        .foregroundColor(.bannerPink)
+                        .offset(x: -5)
+                }
+            }
+            Spacer()
+            ZStack {
+                Circle()
+                    .frame(width: 40)
+                    .foregroundColor(.bannerBlue)
+                    .offset(x: 5, y: -10)
+                Circle()
+                    .frame(width: 30)
+                    .foregroundColor(.bannerPink)
+                    .offset(x: 6, y: 5)
+            }
+        }
     }
 }
 
 #Preview {
-    YourTitleBanner()
+    TitleBannerPreview()
 }
