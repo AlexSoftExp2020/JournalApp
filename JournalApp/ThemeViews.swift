@@ -12,6 +12,7 @@ struct CardBackground: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 15)
             .foregroundColor(getCardBackground(forTheme: theme))
+            .shadow(color: Color.shadow, radius: 4)
     }
     
     func getCardBackground(forTheme: JournalTheme) -> Color {
