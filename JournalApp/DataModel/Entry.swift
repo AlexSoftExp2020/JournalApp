@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum JournalFont: String, CaseIterable, Codable {
+    case font1 = "SF Pro Rounded"
+    case font2 = "Bradley Hand"
+    case font3 = "Times New Roman"
+}
+
 enum JournalTheme: String, CaseIterable, Codable {
     case line
     case curve
