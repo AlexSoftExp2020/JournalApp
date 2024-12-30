@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct EntryRow: Equatable, Codable {
+    var count: Int
+    var cards: [CardData]
+}
+
 enum JournalFont: String, CaseIterable, Codable {
     case font1 = "SF Pro Rounded"
     case font2 = "Bradley Hand"
