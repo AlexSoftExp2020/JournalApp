@@ -48,6 +48,29 @@ struct BackgroundIcon: View {
     }
 }
 
+struct EntryBackground: View {
+    var forTheme: JournalTheme
+    var body: some View {
+        switch forTheme {
+        case .line:
+            Image("LineBackground")
+                .resizable()
+        case .curve:
+            Image("CurveBackground")
+                .resizable()
+        case .dot:
+            Image("DotBackground")
+                .resizable()
+        case .ray:
+            Image("RayBackground")
+                .resizable()
+        case .wave:
+            Image("WaveBackground")
+                .resizable()
+        }
+    }
+}
+
 struct CardBackground: View {
     var theme: JournalTheme = .line
     var body: some View {
