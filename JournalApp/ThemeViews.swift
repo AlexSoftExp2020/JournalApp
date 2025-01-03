@@ -117,6 +117,15 @@ extension JournalFont {
     }
 }
 
+struct FontStyle: ViewModifier {
+    var size: CGFloat
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: size, weight: .medium, design: .rounded))
+            .foregroundColor(.darkBrown)
+    }
+}
+
 struct EntryBannerStyle: ViewModifier {
     var theme: JournalTheme
     func body(content: Content) -> some View {
