@@ -25,6 +25,29 @@ struct EntryBannerTheme: View {
     }
 }
 
+struct BackgroundIcon: View {
+    var forTheme: JournalTheme
+    var body: some View {
+        switch forTheme {
+        case .line:
+            Image("LineIcon")
+                .resizable()
+        case .curve:
+            Image("CurveIcon")
+                .resizable()
+        case .dot:
+            Image("DotIcon")
+                .resizable()
+        case .ray:
+            Image("RayIcon")
+                .resizable()
+        case .wave:
+            Image("WaveIcon")
+                .resizable()
+        }
+    }
+}
+
 struct CardBackground: View {
     var theme: JournalTheme = .line
     var body: some View {
