@@ -136,3 +136,11 @@ struct EntryBannerStyle: ViewModifier {
             .background(CardBackground(theme: theme))
     }
 }
+
+struct BackgroundStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledToFill()
+            .ignoresSafeArea()
+    }
+}
