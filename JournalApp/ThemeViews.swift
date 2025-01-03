@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+struct EntryBannerTheme: View {
+    var forTheme: JournalTheme
+    var body: some View {
+        switch forTheme {
+        case .line:
+            YourTitleBannerView()
+        case .curve:
+            CurveThemeView()
+        case .dot:
+            DotThemeView()
+        case .ray:
+            RayThemeView()
+        case .wave:
+            WaveThemeView()
+        }
+    }
+}
+
 struct CardBackground: View {
     var theme: JournalTheme = .line
     var body: some View {
