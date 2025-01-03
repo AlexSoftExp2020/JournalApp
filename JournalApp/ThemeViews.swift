@@ -81,13 +81,28 @@ struct CardBackground: View {
     
     func getCardBackground(forTheme: JournalTheme) -> Color {
         switch forTheme {
-        case .line: return Color.paleOrange
-        case .curve: return Color.curveCard
-        case .dot: return Color.dotCard
-        case .ray: return Color.rayCard
-        case .wave: return Color.waveCard
+        case .line:
+            return Color.paleOrange
+        case .curve:
+            return Color.curveCard
+        case .dot:
+            return Color.dotCard
+        case .ray:
+            return Color.rayCard
+        case .wave:
+            return Color.waveCard
         }
     }
+}
+
+struct CardStyle: ViewModifier {
+    var theme: JournalTheme = .line
+    func body(content: Content) -> some View {
+        content
+            .background(CardBackground(theme: theme))
+            .padding(5)
+    }
+    
 }
 
 struct EntryBannerStyle: ViewModifier {
