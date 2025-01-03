@@ -144,3 +144,11 @@ struct BackgroundStyle: ViewModifier {
             .ignoresSafeArea()
     }
 }
+
+struct ListRowStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+    }
+}
