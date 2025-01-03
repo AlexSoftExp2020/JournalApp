@@ -152,3 +152,14 @@ struct ListRowStyle: ViewModifier {
             .listRowSeparator(.hidden)
     }
 }
+
+struct EntryListStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scrollContentBackground(.hidden)
+            .listStyle(.plain)
+            .navigationTitle("Journal")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(.hidden)
+    }
+}
