@@ -102,7 +102,19 @@ struct CardStyle: ViewModifier {
             .background(CardBackground(theme: theme))
             .padding(5)
     }
-    
+}
+
+extension JournalFont {
+    func uiFont(_ size: CGFloat) -> Font {
+        switch self {
+        case .font1:
+            return Font.system(size: size, weight: .medium, design: .rounded)
+        case .font2:
+            return Font.custom(rawValue, size: size)
+        case .font3:
+            return Font.custom(rawValue, size: size)
+        }
+    }
 }
 
 struct EntryBannerStyle: ViewModifier {
