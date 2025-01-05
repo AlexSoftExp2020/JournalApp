@@ -8,6 +8,21 @@
 import Foundation
 import SwiftUI
 
+struct MoodViewHalfPreview: View {
+    var body: some View {
+        Grid {
+            GridRow {
+                MoodViewHalf(value: .constant("😁"), isEditing: false, fontStyle: .font1)
+                    .modifier(CardStyle())
+                
+                MoodViewHalf(value: .constant("😁"), isEditing: true, fontStyle: .font1)
+                    .modifier(CardStyle())
+            }
+        }
+        .padding(.horizontal)
+    }
+}
+
 struct TitleBannerPreview: View {
     var body: some View {
         VStack {
