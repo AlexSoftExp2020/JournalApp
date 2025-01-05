@@ -99,3 +99,23 @@ struct EditingButton: View {
         }
     }
 }
+
+struct EntryDetail: View {
+    @Binding var entries: [Entry]
+    @Binding var entry: Entry
+    
+    @State private var isNew: Bool
+    @State private var isEditing: Bool
+    @State private var entryCopy = Entry()
+    
+    init(entries: Binding<[Entry]>, entry: Binding<Entry>, isNew: Bool) {
+        self._entries = entries
+        self._entry = entry
+        self._isNew = State(initialValue: isNew)
+        self.isEditing = State(initialValue: isNew ? true : false)
+    }
+    
+    var body: some View {
+       //MARK: TODO - EntryView
+    }
+}
