@@ -30,9 +30,24 @@ struct EntryView: View {
     var body: some View {
         ScrollView {
             Grid(alignment: .top) {
-                // MARK: TODO
+                TitleView(entry: currentEntryBinding, isEditing: isEditing)
+                    .padding(5)
+                ForEach(0..<currentEntry.entryRows.count, id: \.self) { row in
+                    if isSmallView(for: currentEntry.entryRows[row]) {
+                        GridRow {
+                            ForEach(0..<currentEntry.entryRows[row].count, id: \.self) { index in
+                                // MARK: TODO
+                            }
+                        }
+                    }
+                }
             }
         }
+    }
+    
+    @ViewBuilder
+    private func getCardView(row: Int, index: Int) -> some View {
+        // MARK: TODO
     }
 }
 
