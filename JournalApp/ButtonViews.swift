@@ -50,3 +50,52 @@ struct FontButton: View {
 
     }
 }
+
+struct EditingButton: View {
+    @Binding var entries: [Entry]
+    @Binding var entry: Entry
+    @Binding var entryCopy: Entry
+    @Binding var isNew: Bool
+    @Binding var isEditing: Bool
+    var action: () -> Void = { }
+    var isAdded: Bool {
+        entries.filter({ $0.id == entryCopy.id }).first != nil
+    }
+    
+    var body: some View {
+        Button {
+            if isNew && isEditing {
+                if !isAdded {
+                    entries.append(entryCopy)
+                } else {
+                    if let index = entries.firstIndex(where: {$0.id == entryCopy.id }) {
+                        entries[index].update(from: entryCopy)
+                    }
+                }
+            } else if !isNew && isEditing {
+                entry.update(from: entryCopy)
+            } else if !isNew && !isEditing {
+                entryCopy = entry
+            }
+            withAnimation(.spring()) {
+                isEditing.toggle()
+            }
+        } label: {
+            if isNew && isEditing {
+                if isAdded {
+                    Text("Done")
+                        .fontWeight(.medium)
+                } else {
+                    Text("Add")
+                        .fontWeight(.medium)
+                }
+            } else if !isNew && isEditing {
+                Text("Done")
+                    .fontWeight(.medium)
+            } else if !isEditing {
+                Text("Edit")
+                    .fontWeight(.medium)
+            }
+        }
+    }
+}
