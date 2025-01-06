@@ -23,6 +23,16 @@ struct MoodViewHalfPreview: View {
     }
 }
 
+struct MoodViewFullPreview: View {
+    var body: some View {
+        ScrollView {
+            Grid {
+                // MARK: TODO MoodViewFullSolution
+            }
+        }
+    }
+}
+
 struct TitleBannerPreview: View {
     var body: some View {
         VStack {
