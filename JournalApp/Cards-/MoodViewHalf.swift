@@ -59,5 +59,5 @@ struct MoodViewHalf: View {
 }
 
 #Preview {
-    //MARK: TODO - MoodViewHalfPreview
+    MoodViewHalfPreview()
 }

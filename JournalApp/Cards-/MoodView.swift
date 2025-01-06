@@ -17,7 +17,9 @@ struct MoodView: View {
     
     var body: some View {
         if size == .small {
-            // MARK: TODO MoodViewHalf
+            MoodViewHalf(value: $value, isEditing: isEditing, fontStyle: fontStyle)
+        } else {
+            // MARK: TODO MoodViewFull
         }
     }
 }
