@@ -19,7 +19,7 @@ struct MoodView: View {
         if size == .small {
             MoodViewHalf(value: $value, isEditing: isEditing, fontStyle: fontStyle)
         } else {
-            // MARK: TODO MoodViewFull
+            MoodViewFull(value: $value, isEditing: isEditing, fontStyle: fontStyle)
         }
     }
 }
