@@ -36,6 +36,31 @@ struct PhotoView: View {
             }
         }
     }
+    
+    @ViewBuilder
+    private func getImg(imageState: ImageState) -> some View {
+        switch imageState {
+        case .success(let url):
+            AsyncImage(url: url) { image in
+                image
+                    .resizable()
+            } placeholder: {
+                Text("Loading Image...")
+                    .modifier(FontStyle(size: 12))
+            }
+        case .loading:
+            Text("Loading Image...")
+                .modifier(FontStyle(size: 12))
+        case .empty:
+            Image(systemName: "plus")
+                .font(.system(size: 30))
+        case .failure(_):
+            Image("errorloadingimage")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 35)
+        }
+    }
 }
 
 #Preview {
