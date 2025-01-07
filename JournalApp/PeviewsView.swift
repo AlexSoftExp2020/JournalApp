@@ -27,8 +27,21 @@ struct MoodViewFullPreview: View {
     var body: some View {
         ScrollView {
             Grid {
-                // MARK: TODO MoodViewFullSolution
+                MoodViewFullSolution(value: .constant("😢"), isEditing: true, fontStyle: .font1)
+                    .modifier(CardStyle())
+                
+                MoodViewFullSolution(value: .constant("😢"), isEditing: false, fontStyle: .font1)
+                    .modifier(CardStyle())
+                
+                Divider()
+                
+                MoodViewFull(value: .constant("😢"), isEditing: true, fontStyle: .font1)
+                    .modifier(CardStyle())
+                
+                MoodViewFull(value: .constant("😢"), isEditing: false, fontStyle: .font1)
+                    .modifier(CardStyle())
             }
+            .padding(.horizontal)
         }
     }
 }
