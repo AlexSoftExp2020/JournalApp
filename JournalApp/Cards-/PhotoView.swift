@@ -30,8 +30,14 @@ struct PhotoView: View {
             VStack {
                 PhotosPicker(selection: $imageSelection, matching: .images, photoLibrary: .shared()) {
                     if isEditing {
-                        // TODO: - getImg(imageState: imageState)
+                        getImg(imageState: imageState)
+                            .scaledToFill()
+                            .frame(minWidth: 20, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
                     }
+                }
+                .onChange(of: imageSelection) { newItem in
+                    // TODO: - updateImageState(newItem: newItem)
+                    // updateImageState(newItem: newItem)
                 }
             }
         }
@@ -61,8 +67,31 @@ struct PhotoView: View {
                 .frame(height: 35)
         }
     }
+    
+    private func updateImageState(newItem: PhotosPickerItem?) {
+        Task {
+            do {
+                imageState = .loading
+                // TODO: - PhotoFile
+                guard let photoFile = try await newItem?.loadTransferable(type: PhotoFile.self),
+                      let url = try FileManager.default.copyItemToDocumentDirectory(from: photoFile.url) else {
+                    imageState = .empty
+                    return
+                }
+                print("image saved to: \(url)")
+                value.fileName = url.lastPathComponent
+                print("image file name: \(url.lastPathComponent)")
+                imageState = .success(url)
+                
+            } catch {
+                print("Image download failed with error \(error.localizedDescription)")
+                imageState = .failure(error)
+            }
+        }
+    }
 }
 
 #Preview {
-    PhotoView()
+    PhotoView(value: .constant(ImageModel()), isEditing: true, fontStyle: .font1)
+        .background(CardBackground())
 }
