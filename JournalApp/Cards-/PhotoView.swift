@@ -68,6 +68,12 @@ struct PhotoView: View {
         }
     }
     
+    private func initializeImageState() {
+        if let url = value.url {
+            imageState = .success(url)
+        }
+    }
+    
     private func updateImageState(newItem: PhotosPickerItem?) {
         Task {
             do {
