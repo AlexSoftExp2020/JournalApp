@@ -164,3 +164,16 @@ struct SettingsButtonView: View {
     }
 }
 
+struct NewEntryLabel: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(.tanBackground)
+            RoundedRectangle(cornerRadius: 15)
+                .strokeBorder(Color.darkBrown, style: StrokeStyle(lineWidth: 2, dash: [6,5]))
+            Text("+ New Entry")
+                .modifier(FontStyle(size: 30))
+        }
+        .frame(height: 80)
+    }
+}
