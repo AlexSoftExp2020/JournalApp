@@ -133,3 +133,19 @@ struct EntryDetail: View {
             }
     }
 }
+
+struct SettingsButton: View {
+    @Binding var showSettings: Bool
+    var currentEntry: Entry = Entry()
+    var action: () -> Void = { }
+    
+    var body: some View {
+        Button {
+            showSettings.toggle()
+            action()
+        } label: {
+            // TODO: - SettingsButtonView(theme: currentEntry.theme)
+        }
+
+    }
+}
