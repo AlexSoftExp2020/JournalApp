@@ -144,8 +144,23 @@ struct SettingsButton: View {
             showSettings.toggle()
             action()
         } label: {
-            // TODO: - SettingsButtonView(theme: currentEntry.theme)
+            SettingsButtonView(theme: currentEntry.theme)
         }
-
     }
 }
+
+struct SettingsButtonView: View {
+    var theme: JournalTheme
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            BackgroundIcon(forTheme: theme)
+                .frame(width: 30, height: 30)
+                .clipShape(Circle())
+            Text("Theme >")
+                .modifier(FontStyle(size: 12))
+        }
+        .padding(.vertical)
+    }
+}
+
