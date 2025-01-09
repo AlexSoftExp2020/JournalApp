@@ -112,10 +112,24 @@ struct EntryDetail: View {
         self._entries = entries
         self._entry = entry
         self._isNew = State(initialValue: isNew)
-        self.isEditing = State(initialValue: isNew ? true : false)
+        self._isEditing = State(initialValue: isNew ? true : false)
     }
     
     var body: some View {
-       //MARK: TODO - EntryView
+        EntryView(entry: isNew ? $entryCopy : $entry, entryCopy: $entryCopy, isEditing: $isEditing).navigationBarBackButtonHidden(isNew ? false : isEditing)
+            .toolbar {
+                ToolbarItem {
+                    EditingButton(entries: $entries, entry: $entry, entryCopy: $entryCopy, isNew: $isNew, isEditing: $isEditing)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if !isNew && isEditing {
+                        Button("Cancel") {
+                            withAnimation(.spring()) {
+                                isEditing.toggle()
+                            }
+                        }
+                    }
+                }
+            }
     }
 }
