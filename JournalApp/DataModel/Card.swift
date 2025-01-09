@@ -110,6 +110,22 @@ struct ImageModel: Codable {
     }
 }
 
+struct PhotoFile: Transferable {
+    let url: URL
+    
+    static var transferRepresentation: some TransferRepresentation {
+        FileRepresentation(contentType: .image, shouldAttemptToOpenInPlace: false) { data in
+            SentTransferredFile(data.url, allowAccessingOriginalFile: true)
+        } importing: { received in
+            let tempDirectory = FileManager.default.temporaryDirectory
+            let fileName = received.file.lastPathComponent
+            let destinationURL = tempDirectory.appendingPathComponent(fileName)
+            try FileManager.default.copyItem(at: received.file, to: destinationURL)
+            return Self.init(url: destinationURL)
+        }
+    }
+}
+
 struct Line: Identifiable, Equatable, Codable {
     var points: [CGPoint]
     var color: Color {
