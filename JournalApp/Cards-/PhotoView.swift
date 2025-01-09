@@ -36,11 +36,29 @@ struct PhotoView: View {
                     }
                 }
                 .onChange(of: imageSelection) { newItem in
-                    // TODO: - updateImageState(newItem: newItem)
-                    // updateImageState(newItem: newItem)
+                    updateImageState(newItem: newItem)
+                }
+                .task {
+                    initializeImageState()
                 }
             }
+            if !isEditing, let url = value.url {
+                AsyncImage(url: url) { image in
+                    image.resizable().scaledToFill().frame(minWidth: 20, maxWidth: .infinity, minHeight: 100, maxHeight: .infinity)
+                } placeholder: {
+                    Text("Loading Image...")
+                        .modifier(FontStyle(size: 12))
+                }
+
+            }
+            Image(systemName: "photo.fill")
+                .foregroundColor(.white)
+                .font(.system(size: 16))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+                .padding()
+                .opacity(isEditing ? 1 : 0)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     
     @ViewBuilder
@@ -78,7 +96,6 @@ struct PhotoView: View {
         Task {
             do {
                 imageState = .loading
-                // TODO: - PhotoFile
                 guard let photoFile = try await newItem?.loadTransferable(type: PhotoFile.self),
                       let url = try FileManager.default.copyItemToDocumentDirectory(from: photoFile.url) else {
                     imageState = .empty
