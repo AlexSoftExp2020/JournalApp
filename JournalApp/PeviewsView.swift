@@ -50,8 +50,10 @@ struct SleepViewHalfPreview: View {
     var body: some View {
         Grid {
             GridRow {
-                //MARK: TODO - SleepViewHalfSolution(...
-                //MARK: TODO - SleepViewHalfSolution(...
+                SleepViewHalfSolution(value: .constant(5.0), isEditing: false, fontStyle: .font1)
+                    .modifier(CardStyle())
+                SleepViewHalfSolution(value: .constant(5.0), isEditing: true, fontStyle: .font1)
+                    .modifier(CardStyle())
             }
             
             Divider()
