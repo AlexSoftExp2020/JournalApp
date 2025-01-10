@@ -46,6 +46,28 @@ struct MoodViewFullPreview: View {
     }
 }
 
+struct SleepViewHalfPreview: View {
+    var body: some View {
+        Grid {
+            GridRow {
+                //MARK: TODO - SleepViewHalfSolution(...
+                //MARK: TODO - SleepViewHalfSolution(...
+            }
+            
+            Divider()
+            
+            GridRow {
+                SleepViewHalf(value: .constant(5.0), isEditing: false, fontStyle: .font1)
+                    .modifier(CardStyle())
+                
+                SleepViewHalf(value: .constant(5.0), isEditing: true, fontStyle: .font1)
+                    .modifier(CardStyle())
+            }
+        }
+        .padding(.horizontal)
+    }
+}
+
 struct MoodViewFullSolution: View {
     @Binding var value: String
     var isEditing: Bool
