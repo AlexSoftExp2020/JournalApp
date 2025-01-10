@@ -32,5 +32,5 @@ struct SleepViewHalf: View {
 }
 
 #Preview {
-    //MARK: TODO - SleepViewHalfPreview
+    SleepViewHalfPreview()
 }

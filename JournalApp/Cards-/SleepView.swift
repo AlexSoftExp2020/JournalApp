@@ -17,7 +17,7 @@ struct SleepView: View {
     
     var body: some View {
         if size == .small {
-            // MARK: TODO - SleepViewHalf(...
+            SleepViewHalf(value: $value, isEditing: isEditing, fontStyle: fontStyle)
         } else {
             // MARK: TODO - SleepViewFull(...
         }
