@@ -70,6 +70,18 @@ struct SleepViewHalfPreview: View {
     }
 }
 
+struct SleepViewFullPreview: View {
+    var body: some View {
+        Grid {
+            SleepViewFull(value: .constant(5.0), isEditing: true, fontStyle: .font1)
+                .modifier(CardStyle())
+            SleepViewFull(value: .constant(5.0), isEditing: false, fontStyle: .font1)
+                .modifier(CardStyle())
+        }
+        .padding(.horizontal)
+    }
+}
+
 struct SleepViewHalfSolution: View {
     @Binding var value: Double
     var isEditing: Bool
