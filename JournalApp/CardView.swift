@@ -26,7 +26,10 @@ struct CardView: View {
                       fontStyle: fontStyle,
                       size: cardData.size)
         case .sketch(value: let value):
-            // MARK: TODO SketchView(...
+            SketchView(value: Binding<[Line]>(get: { value }, set: { cardData.card = .sketch(value: $0) }),
+                       isEditing: isEditing,
+                       fontStyle: fontStyle,
+                       size: cardData.size)
         case .photo(value: let value):
             // MARK: TODO PhotoView(...
         case .text(value: let value):
