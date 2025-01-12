@@ -21,7 +21,10 @@ struct CardView: View {
                      fontStyle: fontStyle,
                      size: cardData.size)
         case .sleep(value: let value):
-            SleepView(value: Binding<Double>(get: { value }, set: { cardData.card = .mood(value: $0) } ), isEditing: isEditing, fontStyle: fontStyle, size: cardData.size)
+            SleepView(value: Binding<Double>(get: { value }, set: { cardData.card = .mood(value: $0) } ),
+                      isEditing: isEditing,
+                      fontStyle: fontStyle,
+                      size: cardData.size)
         case .sketch(value: let value):
             // MARK: TODO SketchView(...
         case .photo(value: let value):
