@@ -19,7 +19,7 @@ struct SleepView: View {
         if size == .small {
             SleepViewHalf(value: $value, isEditing: isEditing, fontStyle: fontStyle)
         } else {
-            // MARK: TODO - SleepViewFull(...
+            SleepViewFull(value: $value, isEditing: isEditing, fontStyle: fontStyle)
         }
     }
 }
