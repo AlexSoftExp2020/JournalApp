@@ -61,8 +61,26 @@ struct EntryView: View {
         .frame(maxWidth: 500)
         .frame(maxWidth: .infinity)
         .sheet(isPresented: $showingCardOptions) {
-            // MARK: TODO PickCardView
+            PickCardView(entry: currentEntryBinding, showingSheet: $showingCardOptions)
+                .presentationDetents([.fraction(0.8)])
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                if isEditing {
+                    SettingsButton(showSettings: $showingSettings, currentEntry: currentEntry)
+                        .sheet(isPresented: $showingSettings) {
+                            VStack {
+                                SettingsView(entry: currentEntryBinding, showingSheet: $showingSettings)
+                            }
+                    }
+                }
+            }
+        }
+        .background(
+            EntryBackground(forTheme: currentEntry.theme)
+                .modifier(BackgroundStyle())
+                .opacity(isEditing ? 0.5 : 1)
+        )
     }
     
     @ViewBuilder
