@@ -143,7 +143,7 @@ struct Line: Identifiable, Equatable, Codable {
 }
 
 struct TextData: Equatable, Codable {
-    var text: String = "Write SOmething"
+    var text: String = "Write Something"
     var fontSize: FontSize = .medium
 }
 
