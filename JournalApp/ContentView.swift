@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var journalData = JournalData()
     var body: some View {
+        // MARK: TODO EntryList
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
