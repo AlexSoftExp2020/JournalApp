@@ -20,22 +20,24 @@ struct CardView: View {
                      isEditing: isEditing,
                      fontStyle: fontStyle,
                      size: cardData.size)
-        case .sleep(value: let value):
-            SleepView(value: Binding<Double>(get: { value }, set: { cardData.card = .mood(value: $0) } ),
+        case .sleep(let value):
+            SleepView(value: Binding<Double>(get: { value }, set: { cardData.card = .sleep(value: $0) } ),
                       isEditing: isEditing,
                       fontStyle: fontStyle,
                       size: cardData.size)
-        case .sketch(value: let value):
+        case .sketch(let value):
             SketchView(value: Binding<[Line]>(get: { value }, set: { cardData.card = .sketch(value: $0) } ),
                        isEditing: isEditing,
                        fontStyle: fontStyle,
                        size: cardData.size)
-        case .photo(value: let value):
+        case .photo(let value):
             PhotoView(value: Binding<ImageModel>(get: { value }, set: { cardData.card = .photo(value: $0) } ),
                       isEditing: isEditing,
                       fontStyle: fontStyle)
-        case .text(value: let value):
-            // MARK: TODO TextView(...
+        case .text(let value):
+            TextView(value: Binding<TextData>(get: { value }, set: { cardData.card = .text(value: $0) }),
+                     isEditing: isEditing,
+                     fontStyle: fontStyle)
         }
     }
 }
