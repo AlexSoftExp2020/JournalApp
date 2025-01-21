@@ -31,8 +31,21 @@ struct PickCardView: View {
                             entry.addCard(card: CardData(card: option, size: .small))
                             showingSheet = false
                         } label: {
-                            // MARK: TODO CardOptionView
+                            CardOptionView(icon: Card.icon(option))
+                                .frame(maxWidth: 60, maxHeight: 60)
                         }
+                        .disabled(SleepView.disableSleepViewHalf && option == .sleep(value: 0))
+                        .opacity(option == .sleep(value: 0) && SleepView.disableSleepViewHalf ? 0.5 : 1)
+                        
+                        Button {
+                            entry.addCard(card: CardData(card: option, size: .large))
+                            showingSheet = false
+                        } label: {
+                            CardOptionView(icon: Card.icon(option))
+                                .frame(maxWidth: 100, maxHeight: 60)
+                        }
+                        .disabled(MoodView.disableMoodViewFull && option == .mood(value: "😁"))
+                        .opacity(option == .mood(value: "😁") && MoodView.disableMoodViewFull ? 0.5 : 1)
 
                     }
                 }
