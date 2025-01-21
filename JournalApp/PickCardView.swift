@@ -56,3 +56,16 @@ struct PickCardView: View {
 #Preview {
     PickCardView()
 }
+
+struct CardOptionView: View {
+    var icon: String
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(.darkBrown)
+            Image(systemName: icon)
+                .foregroundColor(.paleOrange)
+                .font(.system(size: 25))
+        }
+    }
+}
