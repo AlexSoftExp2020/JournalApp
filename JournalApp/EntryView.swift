@@ -47,7 +47,16 @@ struct EntryView: View {
     
     @ViewBuilder
     private func getCardView(row: Int, index: Int) -> some View {
-        // MARK: TODO
+        CardView(cardData: currentEntryBinding.entryRows[row].cards[index],
+                 isEditing: isEditing,
+                 fontStyle: currentEntry.font)
+        .overlay(alignment: .topTrailing) {
+            RemoveCardButton(entryCopy: $entryCopy, card: currentEntry.entryRows[row].cards[index].card,
+                             isEditing: isEditing,
+                             row: row,
+                             index: index)
+        }
+        .modifier(CardStyle(theme: currentEntry.theme))
     }
 }
 
