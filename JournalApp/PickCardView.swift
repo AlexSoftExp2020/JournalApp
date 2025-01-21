@@ -54,7 +54,7 @@ struct PickCardView: View {
 }
 
 #Preview {
-    PickCardView()
+    PickCardView(entry: .constant(Entry()), showingSheet: .constant(true))
 }
 
 struct CardOptionView: View {
