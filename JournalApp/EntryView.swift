@@ -61,5 +61,5 @@ struct EntryView: View {
 }
 
 #Preview {
-    EntryView()
+    EntryView(entry: .constant(Entry()), entryCopy: .constant(Entry()), isEditing: .constant(true))
 }
