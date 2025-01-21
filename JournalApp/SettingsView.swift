@@ -22,12 +22,30 @@ struct SettingsView: View {
                     .padding(.top)
                 Grid(horizontalSpacing: 5, verticalSpacing: 10) {
                     GridRow {
-                        //MARK: TODO getBackgroundButton(theme: .line)
-                        
+                        getBackgroundButton(theme: .line)
+                        getBackgroundButton(theme: .curve)
+                        getBackgroundButton(theme: .wave)
+                    }
+                    GridRow {
+                        getBackgroundButton(theme: .dot)
+                        getBackgroundButton(theme: .ray)
                     }
                 }
             }
         }
+        .frame(maxWidth: 500)
+        .padding(30)
+        .frame(maxWidth: .infinity)
+        .overlay(alignment: .topTrailing) {
+            Button {
+                showingSheet.toggle()
+            } label: {
+                Text("Done")
+                    .modifier(FontStyle(size: 20))
+                    .padding()
+            }
+        }
+        .background(Color.paleOrange)
     }
     
     @ViewBuilder
