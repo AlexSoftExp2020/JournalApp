@@ -36,12 +36,32 @@ struct EntryView: View {
                     if isSmallView(for: currentEntry.entryRows[row]) {
                         GridRow {
                             ForEach(0..<currentEntry.entryRows[row].count, id: \.self) { index in
-                                // MARK: TODO
+                                getCardView(row: row, index: index)
                             }
                         }
+                    } else {
+                        getCardView(row: row, index: 0)
                     }
                 }
+                GridRow {
+                    Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                    Color.clear.gridCellUnsizedAxes([.horizontal, .vertical])
+                }
             }
+            .padding()
+            
+            Button {
+                showingCardOptions.toggle()
+            } label: {
+                AddNewCardLabel()
+            }
+            .opacity(isEditing ? 1 : 0)
+            .padding(.bottom, 60)
+        }
+        .frame(maxWidth: 500)
+        .frame(maxWidth: .infinity)
+        .sheet(isPresented: $showingCardOptions) {
+            // MARK: TODO PickCardView
         }
     }
     
