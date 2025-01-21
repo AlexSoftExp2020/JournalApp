@@ -63,3 +63,17 @@ struct EntryView: View {
 #Preview {
     EntryView(entry: .constant(Entry()), entryCopy: .constant(Entry()), isEditing: .constant(true))
 }
+
+struct AddNewCardLabel: View {
+    var body: some View {
+        ZStack {
+            Image(systemName: "circle.fill")
+                .font(.system(size: 40))
+                .foregroundColor(.paleOrange)
+            Image(systemName: "plus.circle.fill")
+                .font(.system(size: 40))
+                .foregroundColor(.darkBrown)
+        }
+        .padding(.vertical)
+    }
+}
