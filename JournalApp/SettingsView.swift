@@ -16,13 +16,40 @@ struct SettingsView: View {
             VStack(alignment: .leading) {
                 Text("Font").modifier(FontStyle(size: 20)).padding(.top)
                 ForEach(JournalFont.allCases, id: \.self) { font in
-                    // MARK: TODO
+                    FontButton(entry: $entry, font: font)
+                }
+                Text("Theme").modifier(FontStyle(size: 20))
+                    .padding(.top)
+                Grid(horizontalSpacing: 5, verticalSpacing: 10) {
+                    GridRow {
+                        //MARK: TODO getBackgroundButton(theme: .line)
+                        
+                    }
                 }
             }
         }
     }
+    
+    @ViewBuilder
+    func getBackgroundButton(theme: JournalTheme) -> some View {
+        Button {
+            entry.theme = theme
+        } label: {
+            VStack(spacing: 5) {
+                BackgroundIcon(forTheme: theme)
+                    .scaledToFill()
+                    .cornerRadius(10.0)
+                    .shadow(color: Color.shadow, radius: 4)
+                    .padding(5)
+                
+                Image(systemName: entry.theme == theme ? "circle.fill" : "circle")
+                    .font(.callout)
+            }
+        }
+
+    }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(entry: .constant(Entry()), showingSheet: .constant(true))
 }
