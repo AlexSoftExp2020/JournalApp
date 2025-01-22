@@ -14,13 +14,35 @@ struct EntryList: View {
     
     var body: some View {
         NavigationSplitView {
-            // MARK: TODO
+            VStack(alignment: .leading) {
+                JournalAppTitle()
+                List(selection: $selection) {
+                    NewEntryLabel()
+                        .tag(newEntry)
+                        .modifier(ListRowStyle())
+                    
+                    ForEach($journalData.entries) { $entry in
+                        TitleView(entry: $entry)
+                            .tag(entry)
+                            .modifier(ListRowStyle())
+                    }
+                    .onDelete(perform: { indexSet in
+                        journalData.entries.remove(atOffsets: indexSet)
+                    })
+                }
+                .modifier(EntryListStyle())
+            }
+            .navigationTitle("Journal").toolbar(.hidden).background(
+                Image("MenuBackground")
+                    .resizable()
+                    .modifier(BackgroundStyle())
+            )
         } detail: {
             ZStack {
                 if let entry = selection, let entryBinding = journalData.getBindingToEntry(entry) {
                     EntryDetail(entries: $journalData.entries, entry: entryBinding, isNew: entry == newEntry)
                 } else {
-                    // MARK: TODO SelectEntryView()
+                    SelectEntryView()
                 }
             }
         }
