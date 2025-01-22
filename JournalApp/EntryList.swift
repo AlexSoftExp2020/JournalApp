@@ -30,3 +30,12 @@ struct EntryList: View {
 #Preview {
     EntryList(journalData: JournalData())
 }
+
+struct JournalAppTitle: View {
+    var body: some View {
+        Text("Journal")
+            .modifier(FontStyle(size: 50))
+            .padding()
+            .padding(.top)
+    }
+}
