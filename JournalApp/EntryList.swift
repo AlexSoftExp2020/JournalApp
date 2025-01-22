@@ -39,3 +39,13 @@ struct JournalAppTitle: View {
             .padding(.top)
     }
 }
+
+struct SelectEntryView: View {
+    var body: some View {
+        Text("Select An Entry")
+            .modifier(FontStyle(size: 20))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.tanBackground)
+            .ignoresSafeArea()
+    }
+}
