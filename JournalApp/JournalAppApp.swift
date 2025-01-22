@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct JournalAppApp: App {
+    @StateObject var journalData = JournalData()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EntryList(journalData: journalData)
+                .task {
+                    journalData.load()
+                }
+                .onChange(of: journalData.entries) { _, _ in
+                    journalData.save()
+                }
         }
     }
 }
