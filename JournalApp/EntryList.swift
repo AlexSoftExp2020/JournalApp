@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct EntryList: View {
+    @ObservedObject var journalData: JournalData
+    @State private var newEntry = Entry()
+    @State private var selection: Entry?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationSplitView {
+            // MARK: TODO
+        } detail: {
+            ZStack {
+                if let entry = selection, let entryBinding = journalData.getBindingToEntry(entry) {
+                    EntryDetail(entries: $journalData.entries, entry: entryBinding, isNew: entry == newEntry)
+                } else {
+                    // MARK: TODO SelectEntryView()
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    EntryList()
+    EntryList(journalData: JournalData())
 }
